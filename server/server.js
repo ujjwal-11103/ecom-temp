@@ -1,5 +1,4 @@
 import express from "express";
-import colors from "colors";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import connectDB from "./config/db.js";
@@ -7,8 +6,7 @@ import authRoute from "./Routes/authRoute.js";
 import categoryRoute from "./Routes/categoryRoute.js";
 import productRoute from "./Routes/productRoute.js";
 import cors from 'cors';
-import path from "path";
-import { fileURLToPath } from "url";
+
 
 // config dotenv
 dotenv.config();
@@ -29,9 +27,6 @@ app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/category', categoryRoute);
 app.use('/api/v1/product', productRoute);
 
-// production
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // rest API
 app.get('/', (req, res) => {
