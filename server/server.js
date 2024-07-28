@@ -7,8 +7,6 @@ import authRoute from "./Routes/authRoute.js";
 import categoryRoute from "./Routes/categoryRoute.js";
 import productRoute from "./Routes/productRoute.js";
 import cors from 'cors';
-
-// Production
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -34,13 +32,6 @@ app.use('/api/v1/product', productRoute);
 // production
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/build')));
-    app.use("*", (req, res) => {
-        res.sendFile(path.join(__dirname, '../client/build/index.html'));
-    });
-}
 
 // rest API
 app.get('/', (req, res) => {
